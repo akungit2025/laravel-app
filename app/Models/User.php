@@ -55,6 +55,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_roles');
     }
 
+    public function role()
+{
+    return $this->belongsTo(Role::class);
+}
+
+
     /**
      * Relationship: user has direct access to menus (many-to-many)
      */

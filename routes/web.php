@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 require __DIR__.'/auth.php';
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+
 
 
 Route::get('/', function () {
@@ -29,3 +31,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });
+
+Route::resource('roles', RoleController::class)->only(['index', 'store', 'edit', 'destroy']);
